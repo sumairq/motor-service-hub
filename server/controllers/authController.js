@@ -82,3 +82,25 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
+
+
+
+exports.logout = async (req, res, next) => {
+  try {
+    res.clearCookie("jwt", {httpOnly: true, sameSite: "none"})
+    res.json({status: "success"})
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getMe = async (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: "success", data: {user: req.user}
+    })
+  } catch (err) {
+    next(err);
+  }
+};
+
