@@ -10,9 +10,11 @@ export default function Login() {
   const [validation, setValidation] = useState("");
 
   const handleChange = (e) => {
-    setformData({
-      ...formData,
+    setformData((prev)=>{
+      return {
+      ...prev,
       [e.target.name]: e.target.value,
+      }
     });
   };
 
